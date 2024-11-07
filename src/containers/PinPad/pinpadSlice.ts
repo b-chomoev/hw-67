@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 interface PinpadState {
     value: string;
@@ -14,8 +14,20 @@ export const pinpadSlice = createSlice({
     name: 'pinpad',
     initialState,
     reducers: {
+        addDigit: () => {
 
+        },
+        deleteLastDigit: () => {
+
+        },
+        checkPin: () => {
+
+        },
+        resetInput: () => {
+
+        },
     },
 });
 
 export const pinpadReducer = pinpadSlice.reducer;
+const { addDigit, deleteLastDigit, checkPin, resetInput } = pinpadSlice.actions;
