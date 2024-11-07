@@ -1,4 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import 'react-toastify/dist/ReactToastify.css';
 
 interface PinpadState {
     value: string;
@@ -24,7 +25,7 @@ export const pinpadSlice = createSlice({
         },
         checkPin: (state) => {
             if (state.value === correctPin) {
-                alert('Correct pin');
+                alert('Access granted');
                 state.value = '';
             } else {
                 alert('Access denied');
