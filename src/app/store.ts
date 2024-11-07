@@ -3,7 +3,7 @@ import {pinpadReducer} from "../containers/PinPad/pinpadSlice.ts";
 
 export const store = configureStore({
     reducer: {
-        counter: pinpadReducer,
+        pinpad: pinpadReducer,
     }
 })
 

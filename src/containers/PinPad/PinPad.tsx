@@ -1,19 +1,32 @@
 import './PinPad.css';
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../app/store.ts";
+import {add} from "./pinpadSlice.ts";
 
 const PinPad = () => {
-    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+
+    const dispatch = useDispatch();
+    const value = useSelector((state: RootState) => state.pinpad.value);
+
+    const handleDigitClick = (digit: string) => {
+        dispatch(add(digit));
+    };
 
     return (
         <>
-            <div className='display'>
-                <input type='password' />
+            <div className='display' style={{padding: '20px', textAlign: 'center',}}>
+                <p>{'*'.repeat(value.length)}</p>
             </div>
+            <hr/>
             <div className='buttons'>
                 {numbers.map((number) => (
-                    <button key={number}>{number}</button>
+                    <button key={number} onClick={() => handleDigitClick(number)}>
+                        {number}
+                    </button>
                 ))}
-                <button>Del</button>
-                <button>E</button>
+                <button>Delete</button>
+                <button>Clear</button>
             </div>
 
         </>
