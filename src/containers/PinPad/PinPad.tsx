@@ -1,7 +1,7 @@
 import './PinPad.css';
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../app/store.ts";
-import {add, deleteLastElement} from "./pinpadSlice.ts";
+import {add, checkPin, deleteLastElement} from "./pinpadSlice.ts";
 
 const PinPad = () => {
     const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
@@ -17,6 +17,10 @@ const PinPad = () => {
         dispatch(deleteLastElement());
     };
 
+    const onCheckPin = () => {
+        dispatch(checkPin());
+    }
+
     return (
         <>
             <div className='display' style={{padding: '20px', textAlign: 'center',}}>
@@ -30,7 +34,7 @@ const PinPad = () => {
                     </button>
                 ))}
                 <button onClick={onDeleteButton}>Delete</button>
-                <button>Clear</button>
+                <button onClick={onCheckPin}>E</button>
             </div>
 
         </>

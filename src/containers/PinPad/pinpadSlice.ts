@@ -22,14 +22,17 @@ export const pinpadSlice = createSlice({
         deleteLastElement: (state) => {
             state.value = state.value.slice(0, -1);
         },
-        checkPin: () => {
-
-        },
-        resetInput: () => {
-
+        checkPin: (state) => {
+            if (state.value === correctPin) {
+                alert('Correct pin');
+                state.value = '';
+            } else {
+                alert('Access denied');
+                state.value = '';
+            }
         },
     },
 });
 
 export const pinpadReducer = pinpadSlice.reducer;
-export const {add, deleteLastElement} = pinpadSlice.actions;
+export const {add, deleteLastElement, checkPin} = pinpadSlice.actions;
