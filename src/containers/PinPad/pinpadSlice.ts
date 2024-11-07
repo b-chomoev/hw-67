@@ -19,8 +19,8 @@ export const pinpadSlice = createSlice({
                 state.value += action.payload;
             }
         },
-        deleteLastDigit: () => {
-
+        deleteLastElement: (state) => {
+            state.value = state.value.slice(0, -1);
         },
         checkPin: () => {
 
@@ -32,4 +32,4 @@ export const pinpadSlice = createSlice({
 });
 
 export const pinpadReducer = pinpadSlice.reducer;
-export const {add} = pinpadSlice.actions;
+export const {add, deleteLastElement} = pinpadSlice.actions;

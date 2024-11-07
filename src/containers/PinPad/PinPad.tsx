@@ -1,7 +1,7 @@
 import './PinPad.css';
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../app/store.ts";
-import {add} from "./pinpadSlice.ts";
+import {add, deleteLastElement} from "./pinpadSlice.ts";
 
 const PinPad = () => {
     const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
@@ -9,8 +9,12 @@ const PinPad = () => {
     const dispatch = useDispatch();
     const value = useSelector((state: RootState) => state.pinpad.value);
 
-    const handleDigitClick = (digit: string) => {
+    const onAddButton = (digit: string) => {
         dispatch(add(digit));
+    };
+
+    const onDeleteButton = () => {
+        dispatch(deleteLastElement());
     };
 
     return (
@@ -21,11 +25,11 @@ const PinPad = () => {
             <hr/>
             <div className='buttons'>
                 {numbers.map((number) => (
-                    <button key={number} onClick={() => handleDigitClick(number)}>
+                    <button key={number} onClick={() => onAddButton(number)}>
                         {number}
                     </button>
                 ))}
-                <button>Delete</button>
+                <button onClick={onDeleteButton}>Delete</button>
                 <button>Clear</button>
             </div>
 
